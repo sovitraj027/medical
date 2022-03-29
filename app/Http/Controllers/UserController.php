@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class UserController extends Controller
 {
@@ -59,18 +60,15 @@ class UserController extends Controller
 
     public function update(UserRequest $request,User $user)
     {
-       
-          $data = $request->except('_token','_method');
-       
+       $user->update($request->except('_token','_method','profile_photo'));
+
           if ($request->hasFile('profile_photo')) {
-             
-            $this->fileUpload($user, 'profile_photo', 'images', false);
+            if (!is_null($user->profile_phot)) {
+
+                $this->fileUpload($user, 'profile_photo', 'user_image', true);
+            }
+            $this->fileUpload($user, 'profile_photo', 'user_image', false);
         }
-        
-        $data['password'] = Hash::make($request->password);
-
-        $user->update($data);
-
         return redirect('manage/user');
     }
 

@@ -24,14 +24,14 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview">
+                <li class="">
                     <a href="" class="nav-link">
                         <i class='fas fa-briefcase-medical'></i>
                         <p class="">
                             Medicines
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="">
                         <li class="nav-item">
                             <a href="{{route('medicine')}}" class="nav-link">
                                 <i class="fas fa-door-open "></i>
@@ -54,14 +54,14 @@
                     </ul>
 
 
-                <li class="nav-item has-treeview">
+                <li class="">
                     <a href="" class="nav-link">
                         <i class="fa fa-users" aria-hidden="true"></i>
                         <p>
                        users
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="">
                         {{-- <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="fas fa-screwdriver ml-2"></i>
@@ -83,7 +83,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item has-treeview">
+                <li class="">
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-list-alt"></i>
                         <p class="">
@@ -91,7 +91,7 @@
                             Transactions
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="">
                         <li class="nav-item">
                             <a href="{{route('invoice')}}" class="nav-link">
                                 <i class="fas fa-plus-circle ml-2"></i>
@@ -105,18 +105,24 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{route('stock')}}" class="nav-link">
+                                <i class="fas fa-list-ul ml-2"></i>
+                                <p class="ml-4">Check Stock</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{'test'}}" class="nav-link">
                                 <i class="fas fa-list-ul ml-2"></i>
                                 <p class="ml-4">Refund Invoice</p>
                             </a>
                         </li>
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="fas fa-check"></i>
                                 Terminate Client
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
 

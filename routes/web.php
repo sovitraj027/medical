@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
+Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::view('/', 'admin.index')->name('dashboard');
     
@@ -35,7 +35,9 @@ Route::middleware('auth')->group(function () {
 
     //search
     Route::get('/search', 'SearchMedicineController@index')->name('search');
+    Route::get('/stock', 'SearchMedicineController@stock')->name('stock');
     Route::get('/search/medicine', 'SearchMedicineController@search')->name('search-medicine');
+    Route::get('/search/stock', 'SearchMedicineController@getstock')->name('search-stock');
 });
 
 Route::get('/test', function () {
@@ -47,4 +49,4 @@ Route::get('/logout', function () {
     return view('auth.login');
 })->name('logout');
 
-Auth::routes();
+

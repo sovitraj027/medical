@@ -53,7 +53,6 @@ class MedicineController extends Controller
 
     public function update(Request $request, Medicine $medicine)
     {
- 
         $data = $request->except('_token','_method');
         $medicine->update($data);
         return redirect('medicine/view');

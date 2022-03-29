@@ -29,18 +29,14 @@
             <div class="row">
                 <div class="col-sm-3"><!--left col-->
                     <div class="text-center mt-3">
-                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                        <img src="{{ isset($user->profile_photo) ? asset('storage/user_image/'. $user->profile_photo) : "http://ssl.gstatic.com/accounts/ui/avatar_2x.png" }}"
                              class="avatar img-circle img-thumbnail"
                              alt="avatar">
                         <h6>Upload a different photo...</h6>
-                        <input type="file" name="profile_photo" class="text-center center-block file-upload">
-                        
-                        {{-- @if(!is_null($user->profile_photo))
-                        <img id="showImagePreview" src="{{ asset('storage/user_image/'.$user->profile_photo)}}" alt="profile_photo preview" height="150px"
-                             width="250px">
-                    @else
+                        <input type="file" name="profile_photo" class="text-center center-block file-upload"> 
+                        {{-- <link rel="shortcut icon" href="{{ isset($user->profile_photo) ? asset('storage/user_image/'. $user->profile_photo) : "http://ssl.gstatic.com/accounts/ui/avatar_2x.png" }}"type="image/x-icon" style="height: 50px;"> --}}
                         <img id="showImagePreview" src="#" alt="profile_photo preview" height="150px" width="250px" style="display: none;">
-                    @endif --}}
+               
                     </div>
                     <hr>
                     <br>

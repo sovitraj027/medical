@@ -28,13 +28,13 @@ class UserRequest extends FormRequest
                 'name'=>'required|string',
                 'email'=>'required|email|unique:users|max:30',
                 'password' => 'required|min:6',
-                'profile_photo' => ['required'],
                 'phone_number' => ['required'],
                 ];
                 if (in_array($this->method(), ['PUT', 'PATCH'])) {
                     $rules['email'] = ['email'];
                 }
               return $rules;
+              dd($rules);
         
     }
 }

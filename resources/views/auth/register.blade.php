@@ -2,13 +2,18 @@
 
 @section('content')
     <div class="container pt-5">
-        <div class="">
-            @if(count($errors->getBags()))
-            @endif
-            @if(Session::has('success'))
-                <div class="alert-success"> {{Session::get('success')}}</div>
-            @endif
+        @if(count($errors) > 0)
+        <div class="p-1">
+            @foreach($errors->all() as $error)
+                <div class="alert alert-warning alert-danger fade show" role="alert">{{$error}}
+                    <button type="button" class="close"
+                            data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endforeach
         </div>
+    @endif
         <form action="{{route('user-register')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
@@ -34,9 +39,7 @@
                                     <label for="first_name"><h4>Full name:</h4></label>
                                     <input type="text" class="form-control" name="name" id="name"
                                            placeholder="full name" title="enter your first name if any.">
-                                    @if($errors->has('name'))
-                                        <p class="text-danger">{{ $errors->first('name') }}</p>
-                                    @endif
+                                           @error("name") <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
 

@@ -18,13 +18,20 @@
             @include('medicine/manufacturerModal')
             @include('medicine/medicineModal')
         </div>
-        <div class="">
-            @if(count($errors->getBags()))
-            @endif
-            @if(Session::has('success'))
-                <div class="alert-success"> {{Session::get('success')}}</div>
-            @endif
+        @if(count($errors) > 0)
+        <div class="p-1">
+           
+            @foreach($errors->all() as $error)
+            {{dd($error)}}
+                <div class="alert alert-warning alert-danger fade show" role="alert">{{$error}}
+                    <button type="button" class="close"
+                            data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endforeach
         </div>
+    @endif
         <h3 class="pt-3">Enter Medicine Stock</h3>
         <form action="{{route('add-medicine-stock')}}" method="post">
             @csrf
@@ -71,12 +78,12 @@
 
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    <label for="manufacturer-name" class="col-form-label">Supplier
+                                    <label for="supplier_name" class="col-form-label">Supplier
                                         Name:</label>
                                     <input type="text" class="form-control" name="supplier_name" id="supplier_name">
-                                    @if($errors->has('supplier_name'))
-                                        <p class="text-danger">{{ $errors->first('supplier_name') }}</p>
-                                    @endif
+                                    @error('supplier_name.*')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 </div>
                             </div>
 
@@ -86,9 +93,7 @@
                                     <input type="date" class="form-control" name="manufactured_date"
                                            id="manufactured_date"
                                            placeholder="enter manufactured date">
-                                    @if($errors->has('manufactured_date'))
-                                        <p class="text-danger">{{ $errors->first('manufactured_date') }}</p>
-                                    @endif
+                                           @error("manufactured date") <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
                             <div class="form-group">

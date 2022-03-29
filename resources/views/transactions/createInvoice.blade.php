@@ -6,6 +6,8 @@
 
 @section('content')
     <div class=" container-fluid">
+        <form action="" method="Post" enctype="multipart/form-data">
+      
         <div class="form-group row">
 
             <div class="col-md-12" id="printBill">
@@ -146,7 +148,7 @@
                 </div>
             </div>
         </div>
-
+    </form>
     </div>
 @stop
 

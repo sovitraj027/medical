@@ -16,5 +16,7 @@ class MedicineStock extends Model
         'quantity'
     ];
 
-
+    public function medicine(){
+        return $this->belongsTo(Medicine::class);
+    }
 }

@@ -15,7 +15,7 @@ class CreateMedicinesTable extends Migration
     {
         Schema::create('medicines', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('medicine_name');
+            $table->string('medicine_name')->nullable();
             $table->integer('total_quantity')->default(0);
             $table->integer('selling_price')->default(0);
             $table->timestamps();

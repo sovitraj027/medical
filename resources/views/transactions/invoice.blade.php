@@ -74,7 +74,7 @@
 				</tr>
 				<tr>
 					<th><span contenteditable>Balance Due</span></th>
-					<td><span data-prefix></span><span>{{$total-$paid_amount}}</span></td>
+					<td><span data-prefix></span><span>{{$total-($paid_amount+$discount)}}</span></td>
 				</tr>
 			</table>
 		</article>

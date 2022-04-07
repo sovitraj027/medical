@@ -37,24 +37,23 @@ class MedicineStockController extends Controller
 
  public function createInvoice(Request $request){
      $total=0;
-     
-
      $medicines=Medicine::whereIn('id',$request->medicine_id)->get()->toArray();
      $qty=$request->qty;
      foreach($medicines as $key => $medicine){
          $total+=$medicine['selling_price']*$qty[$key];
-foreach($qty as $k=>$q){
-    // array_push($medicine,$q);
+    foreach($qty as $k=>$q){
+
     if($key==$k){
         array_push($medicines[$key],$q);
     }
-    // $medicine[$key] = $q;  
-}
-       
+    
+    }
         
     }
-    
- 
+    foreach($medicines as $medicine){
+        $medicine=Medicine::where('id',$medicine['id'])->decrement('total_quantity',$medicine[0]);
+    } 
+
   return view('transactions.invoice',[
       'customer_name'=>$request->customer_name,
       'contact'=>$request->contact,

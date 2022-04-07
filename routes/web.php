@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::post('medicine', 'MedicineController@store')->name('store-medicine');
     Route::get('/medicine/view', 'MedicineController@viewMedicine')->name('view-medicine');
     Route::post('/medicine/store', 'MedicineStockController@stockStore')->name('add-medicine-stock');
-    Route::post('/medicine/{id}', 'MedicineStockController@delete')->name('deletemedicine');
+    Route::post('/generate/invoice', 'MedicineStockController@createInvoice')->name('create_invoice');
     Route::resource('/medicines',MedicineController::class);
     
 
@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
     //invoice
     Route::get('/invoices', 'InvoiceBillController@createInvoices')->name('invoice');
+    Route::get('/refundinvoices', 'InvoiceBillController@refundInvoices')->name('refund');
 
     //search
     Route::get('/search', 'SearchMedicineController@index')->name('search');

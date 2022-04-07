@@ -27,4 +27,11 @@ class InvoiceBillController extends Controller
         return view('transactions.createInvoice', compact('medicine'));
     }
 
+    public function refundInvoices()
+    {
+       
+        $medicine = Medicine::all();
+        return view('transactions.refundInvoice', compact('medicine'));
+    }
+
 }

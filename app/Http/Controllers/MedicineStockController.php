@@ -35,5 +35,37 @@ class MedicineStockController extends Controller
         return back();
     }
 
-    //
+ public function createInvoice(Request $request){
+     $total=0;
+     
+
+     $medicines=Medicine::whereIn('id',$request->medicine_id)->get()->toArray();
+     $qty=$request->qty;
+     foreach($medicines as $key => $medicine){
+         $total+=$medicine['selling_price']*$qty[$key];
+foreach($qty as $k=>$q){
+    // array_push($medicine,$q);
+    if($key==$k){
+        array_push($medicines[$key],$q);
+    }
+    // $medicine[$key] = $q;  
+}
+       
+        
+    }
+    
+ 
+  return view('transactions.invoice',[
+      'customer_name'=>$request->customer_name,
+      'contact'=>$request->contact,
+      'discount'=>$request->discount,
+      'paid_amount'=>$request->paidAmount,
+      'quantity'=>$request->qty,
+      'date'=>$request->date,
+      'medicines'=>$medicines,
+      'total'=>$total
+
+  ]);
+ }
+    
 }

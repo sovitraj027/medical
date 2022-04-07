@@ -111,9 +111,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{'test'}}" class="nav-link">
+                            <a href="{{route('refund')}}" class="nav-link">
                                 <i class="fas fa-list-ul ml-2"></i>
                                 <p class="ml-4">Refund Invoice</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('refund')}}" class="nav-link">
+                                <i class="fas fa-list-ul ml-2"></i>
+                                <p class="ml-4">Monthly Sell</p>
                             </a>
                         </li>
 

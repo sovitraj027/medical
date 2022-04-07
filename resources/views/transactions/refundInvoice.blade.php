@@ -1,14 +1,13 @@
 @section('title')
     <title>Medicine</title>
 @stop
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 @extends('layouts.admin')
 
 @section('content')
     <div class=" container-fluid">
-        <form action="{{route('create_invoice')}}" method="Post" enctype="multipart/form-data">
-      @csrf
+        <form action="" method="Post" enctype="multipart/form-data">
+      
         <div class="form-group row">
 
             <div class="col-md-12" id="printBill">
@@ -24,8 +23,8 @@
             <div class="col-md-12 row mt-2">
                 <label for="Table Name" class="col-sm-2"><span class="float-right"> Select Medicine:</span></label>
                 <div class="col-md-9">
-                    <select class="form-control select_medicine" multiple="multiple" id="select_medicine" name="medicine_id[]">
-                   
+                    <select class="form-control select_medicine" id="select_medicine" name="medicine_id[]">
+                        <option value="">!!!!! Select Medicine !!!!!</option>
                         @if(isset($medicine))
                             @foreach($medicine as $medicine)
                                 <option value="{{$medicine->id}}"
@@ -52,7 +51,7 @@
             <div class="col-md-12 row mt-2 ">
                 <label for="date" class="col-sm-2"><span class="float-right"> Date</span></label>
                 <div class="col-md-9">
-                    <input type="date" class="form-control form-control-sm" id="checkOutdate"  name="date" >
+                    <input type="date" class="form-control form-control-sm" id="checkOutdate">
                 </div>
             </div>
 
@@ -154,23 +153,7 @@
 @stop
 
 @section('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        // $('#select_medicine').val([]);
-        //multiple selction
-        $(function()
-{
-  $(".form-control select_medicine").select2();
-});
-// $('#select_medicine').prepend('<option selected=""></option>').select2({placeholder: "Select Month"});
-            $('#select_medicine').select2({
-            multiple:true,
-            placeholder: "Select a medicine",
-            allowClear: true,
-            tags: true,
-            tokenSeparators: [',', ' ']
-        });
-
       let sn = 0;
       let selectedMedicine = [];
       let medicineData = {rate: 0, qty: 0}

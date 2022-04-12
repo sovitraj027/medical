@@ -26,6 +26,7 @@ class MedicineController extends Controller
 
     public function store(Request $request)
     {
+      
         $validator = $this->validate($request, [
             'medicine_name' => ['required', 'string', 'max:255'],
         ]);

@@ -58,21 +58,15 @@
 			<table class="balance">
           
 				<tr>
-					<th><span contenteditable>Total</span></th>
+					<th><span contenteditable>Return Amount</span></th>
                    
 					<td><span data-prefix></span><span>{{$total}}</span></td>
                    
 				</tr>
            
-				<tr>
-					<th><span contenteditable>Disount</span></th>
-					<td><span data-prefix></span><span contenteditable>{{$discount}}</span></td>
-				</tr>
-                <tr>
-					<th><span contenteditable>Amount Paid</span></th>
-					<td><span data-prefix></span><span contenteditable>{{$paid_amount}}</span></td>
-				</tr>
-				<tr>
+				
+               
+				{{-- <tr>
 					@if($total<($paid_amount+$discount))
 					<th><span contenteditable>Refund Amount</span></th>
 					<td><span data-prefix></span><span>{{$total-($paid_amount+$discount)}}</span></td>
@@ -80,7 +74,7 @@
 					<th><span contenteditable>Balance Due</span></th>
 					<td><span data-prefix></span><span>{{$total-($paid_amount+$discount)}}</span></td>
 					@endif
-				</tr>
+				</tr> --}}
 			</table>
 		</article>
 	

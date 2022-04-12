@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\InvoiceBill;
 use App\Medicine;
+use App\MedicineStock;
 use Illuminate\Http\Request;
 
 class InvoiceBillController extends Controller
@@ -23,7 +24,10 @@ class InvoiceBillController extends Controller
 
     public function createInvoices()
     {
-        $medicine = Medicine::all();
+     
+        
+        $medicine = Medicine::where('total_quantity','>','0')->get();
+      
         return view('transactions.createInvoice', compact('medicine'));
     }
 

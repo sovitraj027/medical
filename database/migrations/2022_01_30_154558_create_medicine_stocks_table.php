@@ -15,17 +15,16 @@ class CreateMedicineStocksTable extends Migration
     {
         Schema::create('medicine_stocks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('medicine_id');
-            $table->unsignedBigInteger('medicine_manufacturer_id');
+            $table->string('medicine_name');
+            $table->string('manufacturer_name');
             $table->string('supplier_name');
             $table->date('manufactured_date');
             $table->date('expiry_date');
             $table->double('cost_price');
             $table->double('quantity');
             $table->timestamps();
-
-            $table->foreign('medicine_id')->references('id')->on('medicines')->onDelete('cascade');
-            $table->foreign('medicine_manufacturer_id')->references('id')->on('medicine_manufacturers')->onDelete('cascade');
+            // $table->foreign('medicine_name')->references('medicine_name')->on('medicines')->onDelete('cascade');
+            // $table->foreign('manufacturer_name')->references('manufacturer_name')->on('medicine_manufacturers')->onDelete('cascade');
 
         });
     }

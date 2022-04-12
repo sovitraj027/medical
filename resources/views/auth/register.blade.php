@@ -1,115 +1,77 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('content')
-    <div class="container pt-5">
-        @if(count($errors) > 0)
-        <div class="p-1">
-            @foreach($errors->all() as $error)
-                <div class="alert alert-warning alert-danger fade show" role="alert">{{$error}}
-                    <button type="button" class="close"
-                            data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endforeach
-        </div>
-    @endif
-        <form action="{{route('user-register')}}" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="row">
-                <div class="col-sm-3"><!--left col-->
-                    <div class="text-center mt-3">
-                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                             class="avatar img-circle img-thumbnail"
-                             alt="avatar">
-                        <h6>Upload a different photo...</h6>
-                        <input type="file" name="profile_photo" class="text-center center-block file-upload">
-                    </div>
-                    <hr>
-                    <br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Register') }}</div>
 
-                </div><!--/col-3-->
-                <div class="col-sm-9">
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="home">
-                            <hr>
-                            <div class="form-group">
+                <div class="card-body">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
 
-                                <div class="col-xs-6">
-                                    <label for="first_name"><h4>Full name:</h4></label>
-                                    <input type="text" class="form-control" name="name" id="name"
-                                           placeholder="full name" title="enter your first name if any.">
-                                           @error("name") <span class="text-danger">{{$message}}</span> @enderror
-                                </div>
-                            </div>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
-                            <div class="form-group">
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                <div class="col-xs-6">
-                                    <label for="phone"><h4>Phone Number:</h4></label>
-                                    <input type="number" class="form-control" name="phone_number" id="phone_number"
-                                           placeholder="enter phone" title="enter your phone number if any.">
-                                    @if($errors->has('phone_number'))
-                                        <p class="text-danger">{{ $errors->first('phone_number') }}</p>
-                                    @endif
-                                </div>
-                            </div>
-                            <input type="hidden" class="form-control" name="role_id" value="2">
-                            <div class="form-group">
-
-                                <div class="col-xs-6">
-                                    <label for="email"><h4>Email</h4></label>
-                                    <input type="email" class="form-control" name="email" id="email"
-                                           placeholder="you@email.com" title="enter your email.">
-                                    @if($errors->has('email'))
-                                        <p class="text-danger">{{ $errors->first('email') }}</p>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-xs-6">
-                                <label for="email"><h4>Password</h4></label>
-                                <input type="password" class="form-control" name="password" id="email"
-                                       placeholder="enter password" title="enter password.">
-                                @if($errors->has('password'))
-                                    <p class="text-danger">{{ $errors->first('password') }}</p>
-                                @endif
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
-                            
-                            <div class="form-group">
-                                <div class="col-xs-12">
-                                    <br>
-                                    <button class="btn btn-lg btn-success" type="submit"><i
-                                                class="glyphicon glyphicon-ok-sign"></i> Save
-                                    </button>
-                                </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
-                            <hr>
                         </div>
 
-                    </div>
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-@endsection
-
-@section('scripts')
-    <script>
-      $(document).ready(function () {
-        var readURL = function (input) {
-          if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-              $('.avatar').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-          }
-        }
-
-        $(".file-upload").on('change', function () {
-          readURL(this);
-        });
-      });
-    </script>
+</div>
 @endsection

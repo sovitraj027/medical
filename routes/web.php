@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/medicine/view', 'MedicineController@viewMedicine')->name('view-medicine');
     Route::post('/medicine/store', 'MedicineStockController@stockStore')->name('add-medicine-stock');
     Route::post('/generate/invoice', 'MedicineStockController@createInvoice')->name('create_invoice');
+    Route::post('/return/invoice', 'MedicineStockController@returnInvoice')->name('return_invoice');
     Route::resource('/medicines',MedicineController::class);
     
 
@@ -39,6 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/stock', 'SearchMedicineController@stock')->name('stock');
     Route::get('/search/medicine', 'SearchMedicineController@search')->name('search-medicine');
     Route::get('/search/stock', 'SearchMedicineController@getstock')->name('search-stock');
+    Route::get('/view/transaction', 'SearchMedicineController@viewTransaction')->name('viewTransaction');
+    Route::get('/transaction', 'SearchMedicineController@gettransaction')->name('getTransaction');
 });
 
 Route::get('/test', function () {
@@ -51,3 +54,7 @@ Route::get('/logout', function () {
 })->name('logout');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

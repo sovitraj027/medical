@@ -22,7 +22,7 @@
         <div class="p-1">
            
             @foreach($errors->all() as $error)
-            {{dd($error)}}
+    
                 <div class="alert alert-warning alert-danger fade show" role="alert">{{$error}}
                     <button type="button" class="close"
                             data-dismiss="alert" aria-label="Close">
@@ -44,16 +44,16 @@
                                 <div class="col-xs-6">
                                     <label for="manufacturer-name" class="col-form-label">Medicine
                                         Name:</label>
-                                    <select name="medicine_id" class="form-control" id="medicine_id">
+                                    <select name="medicine_name" class="form-control" id="medicine_name">
                                         <option value="">Please select any</option>
                                         @if($medicine)
                                             @foreach($medicine as $medicine)
-                                                <option value="{{$medicine->id}}">{{$medicine->medicine_name}}</option>
+                                                <option value="{{$medicine->medicine_name}}">{{$medicine->medicine_name}}</option>
                                             @endforeach
                                         @endif
                                     </select>
-                                    @if($errors->has('medicine_id'))
-                                        <p class="text-danger">{{ $errors->first('medicine_id') }}</p>
+                                    @if($errors->has('medicine_name'))
+                                        <p class="text-danger">{{ $errors->first('medicine_name') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -62,16 +62,16 @@
                                 <div class="col-xs-6">
                                     <label for="manufacturer-name" class="col-form-label">Manufacturer
                                         Name:</label>
-                                    <select name="medicine_manufacturer_id" class="form-control" id="medicine_manufacturer_id">
+                                    <select name="manufacturer_name" class="form-control" id="medicine_manufacturer_id">
                                         <option value="">Please select any</option>
                                         @if($medicineManufacturer)
                                             @foreach($medicineManufacturer as $manufacturer)
-                                                <option value="{{$manufacturer->id}}">{{$manufacturer->manufacturer_name}}</option>
+                                                <option value="{{$manufacturer->manufacturer_name}}">{{$manufacturer->manufacturer_name}}</option>
                                             @endforeach
                                         @endif
                                     </select>
-                                    @if($errors->has('manufacturer_id'))
-                                        <p class="text-danger">{{ $errors->first('manufacturer_id') }}</p>
+                                    @if($errors->has('manufacturer_name'))
+                                        <p class="text-danger">{{ $errors->first('manufacturer_name') }}</p>
                                     @endif
                                 </div>
                             </div>

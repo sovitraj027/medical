@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class MedicineStock extends Model
 {
     protected $fillable = [
-        'medicine_id',
-        'medicine_manufacturer_id',
+        'medicine_name',
+        'manufacturer_name',
         'supplier_name',
         'manufactured_date',
         'expiry_date',

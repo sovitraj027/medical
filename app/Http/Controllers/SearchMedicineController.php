@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Medicine;
 use App\MedicineStock;
+use App\MonthlyTransaction;
 use Illuminate\Http\Request;
 
 class SearchMedicineController extends Controller
@@ -16,6 +17,11 @@ class SearchMedicineController extends Controller
     public function stock()
     {
         return view('medicine.searchStock');
+    }
+
+    public function viewTransaction()
+    {
+        return view('transactions.monthlyTransaction');
     }
 
 
@@ -34,4 +40,24 @@ class SearchMedicineController extends Controller
                 'medicine'=>$stock,
             ]);
         }
+
+    public function getTransaction(Request $request){
+        $medicines=MonthlyTransaction::whereMonth('buy_date',$request->month)->get();
+      
+          
+//         $medicines=MonthlyTransaction::whereMonth('buy_date',$request->month)->get()->toArray();
+//         $data=MonthlyTransaction::whereMonth('buy_date',$request->month)->pluck('medicine_id')->toArray();
+//          $med=Medicine::whereIn('id',$data)->get()->toArray();
+    
+//          $merged=array_merge($med,$medicines);
+//          dd($merged);  
+         
+//          foreach($merged as $key=>$merge){
+// dd($merge['customer_name']);
+        //  }
+        return view('transactions.monthlytransaction',[
+            'medicines'=>$medicines,
+            
+        ]);
+    }
 }

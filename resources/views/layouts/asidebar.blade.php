@@ -117,7 +117,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('refund')}}" class="nav-link">
+                            <a href="{{route('viewTransaction')}}" class="nav-link">
                                 <i class="fas fa-list-ul ml-2"></i>
                                 <p class="ml-4">Monthly Sell</p>
                             </a>

@@ -11,7 +11,7 @@
     </tr>
     </thead>
     <tbody>
-        {{-- @if(isset($medicines)) --}}
+        @if(isset($medicines))
         {{-- @php($sn = 0)    --}}
         
         @forelse($medicines as $medicine)
@@ -20,14 +20,14 @@
                 <td>{{$loop->iteration}}</td>
                 <td> {{$medicine->customer_name}}</td>
                  <td>{{$medicine->medicine->medicine_name}}</td> 
+                 <td>{{$medicine->medicine->selling_price}}</td>
                 <td>{{$medicine->quantity}}</td>
-                <td>{{$medicine->medicine->selling_price}}</td>
                 <td>{{$medicine->buy_date}}</td>
                
             </tr>
             @empty
             <td>No any medicine yet</td>
             @endforelse
-        {{-- @endif --}}
+        @endif
     </tbody>
 </table>

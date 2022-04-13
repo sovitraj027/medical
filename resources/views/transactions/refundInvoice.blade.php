@@ -1,6 +1,8 @@
 @section('title')
     <title>Medicine</title>
 @stop
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 @extends('layouts.admin')
@@ -52,7 +54,7 @@
             <div class="col-md-12 row mt-2 ">
                 <label for="date" class="col-sm-2"><span class="float-right"> Date</span></label>
                 <div class="col-md-9">
-                    <input type="date" class="form-control form-control-sm" id="checkOutdate"  name="date" >
+                    <input type="text" id="datepicker" name="date" class="form-control form-control-sm">
                 </div>
             </div>
 
@@ -154,10 +156,14 @@
 @stop
 
 @section('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        // $('#select_medicine').val([]);
-        //multiple selction
+          $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+       
         $(function()
 {
   $(".form-control select_medicine").select2();

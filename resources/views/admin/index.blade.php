@@ -18,7 +18,7 @@
                         Total Sales:
                     </div>
                     <div class="card-body bg-warning">
-                        <span>20</span>
+                        <span>{{$total_sale}}</span>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                         Total Available Quantity:
                     </div>
                     <div class="card-body bg-warning">
-                        <span>100</span>
+                        <span>{{$available_quantity}}</span>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                         Total Revenue:
                     </div>
                     <div class="card-body bg-warning">
-                        <span>$20</span>
+                        <span>Rs {{$revenue}}</span>
                     </div>
                 </div>
             </div>

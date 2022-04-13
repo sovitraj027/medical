@@ -15,10 +15,10 @@ class CreateMonthlyTransactionsTable extends Migration
     {
         Schema::create('monthly_transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('medicine_id');
-            $table->string('customer_name');
-            $table->string('buy_date');
-            $table->double('quantity');
+            $table->unsignedBigInteger('medicine_id')->nullable();
+            $table->string('customer_name')->nullable();
+            $table->string('buy_date')->nullable();
+            $table->double('quantity')->nullable();
             $table->timestamps();
             $table->foreign('medicine_id')->references('id')->on('medicines')->onDelete('cascade');
 

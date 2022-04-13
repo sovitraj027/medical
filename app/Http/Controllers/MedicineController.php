@@ -22,7 +22,9 @@ class MedicineController extends Controller
         $medicine = Medicine::all();
         return view('medicine/viewMedicine', compact('medicine'));
     }
-
+    public function automateMedicine(){
+        return view('medicine.automate');
+    }
 
     public function store(Request $request)
     {

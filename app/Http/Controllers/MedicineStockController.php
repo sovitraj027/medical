@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Medicine;
 use App\MedicineStock;
 use App\MonthlyTransaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -53,10 +54,12 @@ class MedicineStockController extends Controller
        
    foreach($medicines as $medicine)
    { 
+    $formatedDate=Carbon::parse($request->date)->format('Y/m/d');
     $requestData['customer_name']=$request->customer_name;
-    $requestData['buy_date']=$request->date;
+    $requestData['buy_date']=$formatedDate;
     $requestData['medicine_id']=$medicine['id'];
     $requestData['quantity']=$medicine[0];
+    $requestData['total']=$medicine['selling_price']*$medicine[0];
     MonthlyTransaction::create($requestData);
 }
 
@@ -87,7 +90,9 @@ class MedicineStockController extends Controller
        
        }      
        }
-
+       foreach($medicines as $medicine){
+        $medicine=Medicine::where('id',$medicine['id'])->increment('total_quantity',$medicine[0]);
+    } 
 
        return view('transactions.returnInvoice',[
         'customer_name'=>$request->customer_name,

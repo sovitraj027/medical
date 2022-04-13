@@ -51,6 +51,12 @@
                                 <p class="ml-3"> Manufacturer List</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('automate')}}" class="nav-link">
+                                <i class="fas fa-door-open "></i>
+                                <p class="ml-3">Automate Medicine</p>
+                            </a>
+                        </li>
                     </ul>
 
 

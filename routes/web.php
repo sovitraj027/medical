@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::middleware('auth')->group(function () {
-    Route::view('/', 'admin.index')->name('dashboard');
+    Route::get('/', 'WelcomeController@index')->name('dashboard');
     
     //user module
     Route::resource('/users',UserController::class);
@@ -23,6 +23,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/medicine/store', 'MedicineStockController@stockStore')->name('add-medicine-stock');
     Route::post('/generate/invoice', 'MedicineStockController@createInvoice')->name('create_invoice');
     Route::post('/return/invoice', 'MedicineStockController@returnInvoice')->name('return_invoice');
+    Route::get('/automate/medicine', 'MedicineController@automateMedicine')->name('automate');
+
     Route::resource('/medicines',MedicineController::class);
     
 

@@ -15,8 +15,9 @@
             <br>
             <br>
 
-            <form action="">
-              <input type="file" id="myFile">
+            <form action="{{route('import')}}" method="POST" enctype="multipart/form-data">
+              @csrf
+              <input type="file" id="myFile" name="import_file">
               <input type="submit" class="btn btn-primary">
             </form>
 

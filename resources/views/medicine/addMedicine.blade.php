@@ -18,20 +18,13 @@
             @include('medicine/manufacturerModal')
             @include('medicine/medicineModal')
         </div>
-        @if(count($errors) > 0)
-        <div class="p-1">
-           
-            @foreach($errors->all() as $error)
-    
-                <div class="alert alert-warning alert-danger fade show" role="alert">{{$error}}
-                    <button type="button" class="close"
-                            data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endforeach
+        <div class="">
+            @if(count($errors->getBags()))
+            @endif
+            @if(Session::has('success'))
+                <div class="alert-success"> {{Session::get('success')}}</div>
+            @endif
         </div>
-    @endif
         <h3 class="pt-3">Enter Medicine Stock</h3>
         <form action="{{route('add-medicine-stock')}}" method="post">
             @csrf
@@ -44,16 +37,16 @@
                                 <div class="col-xs-6">
                                     <label for="manufacturer-name" class="col-form-label">Medicine
                                         Name:</label>
-                                    <select name="medicine_name" class="form-control" id="medicine_name">
+                                    <select name="medicine_id" class="form-control" id="medicine_id">
                                         <option value="">Please select any</option>
                                         @if($medicine)
                                             @foreach($medicine as $medicine)
-                                                <option value="{{$medicine->medicine_name}}">{{$medicine->medicine_name}}</option>
+                                                <option value="{{$medicine->id}}">{{$medicine->medicine_name}}</option>
                                             @endforeach
                                         @endif
                                     </select>
-                                    @if($errors->has('medicine_name'))
-                                        <p class="text-danger">{{ $errors->first('medicine_name') }}</p>
+                                    @if($errors->has('medicine_id'))
+                                        <p class="text-danger">{{ $errors->first('medicine_id') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -62,28 +55,28 @@
                                 <div class="col-xs-6">
                                     <label for="manufacturer-name" class="col-form-label">Manufacturer
                                         Name:</label>
-                                    <select name="manufacturer_name" class="form-control" id="medicine_manufacturer_id">
+                                    <select name="medicine_manufacturer_id" class="form-control" id="medicine_manufacturer_id">
                                         <option value="">Please select any</option>
                                         @if($medicineManufacturer)
                                             @foreach($medicineManufacturer as $manufacturer)
-                                                <option value="{{$manufacturer->manufacturer_name}}">{{$manufacturer->manufacturer_name}}</option>
+                                                <option value="{{$manufacturer->id}}">{{$manufacturer->manufacturer_name}}</option>
                                             @endforeach
                                         @endif
                                     </select>
-                                    @if($errors->has('manufacturer_name'))
-                                        <p class="text-danger">{{ $errors->first('manufacturer_name') }}</p>
+                                    @if($errors->has('manufacturer_id'))
+                                        <p class="text-danger">{{ $errors->first('manufacturer_id') }}</p>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    <label for="supplier_name" class="col-form-label">Supplier
+                                    <label for="manufacturer-name" class="col-form-label">Supplier
                                         Name:</label>
                                     <input type="text" class="form-control" name="supplier_name" id="supplier_name">
-                                    @error('supplier_name.*')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
+                                    @if($errors->has('supplier_name'))
+                                        <p class="text-danger">{{ $errors->first('supplier_name') }}</p>
+                                    @endif
                                 </div>
                             </div>
 
@@ -93,7 +86,9 @@
                                     <input type="date" class="form-control" name="manufactured_date"
                                            id="manufactured_date"
                                            placeholder="enter manufactured date">
-                                           @error("manufactured date") <span class="text-danger">{{$message}}</span> @enderror
+                                    @if($errors->has('manufactured_date'))
+                                        <p class="text-danger">{{ $errors->first('manufactured_date') }}</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group">
@@ -153,6 +148,4 @@
             </div>
         </form>
     </div>
-
-
 @stop

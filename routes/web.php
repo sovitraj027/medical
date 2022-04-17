@@ -16,6 +16,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/manage/user', 'ManualAuth\RegisterController@showUser')->name('manage-user');
     Route::post('/register/user', 'ManualAuth\RegisterController@register')->name('user-register');
 
+    //excel
+    Route::post('/excel/Imort', 'MedicineStockController@excelImport')->name('import');
+
+
 //    Route::resource('medicine', 'MedicineController');
     Route::get('medicine', 'MedicineController@index')->name('medicine');
     Route::post('medicine', 'MedicineController@store')->name('store-medicine');

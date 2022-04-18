@@ -17,7 +17,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/register/user', 'ManualAuth\RegisterController@register')->name('user-register');
 
     //excel import export
-    Route::post('/excel/Imort', 'MedicineStockController@excelImport')->name('import');
+    Route::post('/excel/Imort', 'MedicineImportExportController@excelImport')->name('import');
+    Route::get('/medicinestock/export', 'MedicineImportExportController@export')->name('export');
+    
 
 
 //    Route::resource('medicine', 'MedicineController');

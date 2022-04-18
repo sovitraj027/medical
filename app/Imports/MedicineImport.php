@@ -47,17 +47,18 @@ class MedicineImport implements ToModel,WithHeadingRow
         
        $medicine=Medicine::select('medicine_name','id','selling_price','total_quantity')->where('medicine_name',$row['medicine_name'])->first();
        $manufacturer=MedicineManufacturer::select('manufacturer_name','id')->where('manufacturer_name',$row['manufacturer_name'])->first();
+
        $date1=Carbon::parse($row['manufactured_date'])->format('Y-m-d');
        $date2=Carbon::parse($row['expiry_date'])->format('Y-m-d');
+  
 
        $medicine1 = Medicine::where('medicine_name', $row['medicine_name']);
      
        $medicine1->update(['selling_price' => $row['selling_price'],
        'medicine_manufacturer_id'=>$manufacturer->id??null,
-    ]);
+          ]);
  
        $medicine1->increment('total_quantity', $row['quantity']);
-   
         return new MedicineStock([
             'medicine_id'=>$medicine->id??Null,
             'medicine_manufacturer_id'=>$manufacturer->id??null,
@@ -66,8 +67,7 @@ class MedicineImport implements ToModel,WithHeadingRow
             'expiry_date'=>$date2,
             'cost_price'=>$row['cost_price'],
             'quantity'=>$row['quantity'],
-        ]);
-      
+        ]);  
       
     }
 }

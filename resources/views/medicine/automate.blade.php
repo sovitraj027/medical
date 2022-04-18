@@ -1,17 +1,14 @@
-@section('title')
-    <title>Medicine</title>
-@stop
 
 @extends('layouts.admin')
 
 
 @section('content')
-
-
         <div style="margin-left: 422px; padding: 53px; margin-top: 105px">
             <h1> Upload the Medicine File. </h1>
-
-            <button class="btn btn-primary"> Download Format </button>
+              <form action="{{route('export')}}" method="GET" enctype="multipart/form-data">
+                <button class="btn btn-primary" > Download Format </button>
+              </form>
+           
             <br>
             <br>
 
@@ -27,9 +24,7 @@
               <li>Please Uplaod the Proper Format.</li>
               <li>The format will be in .xlsx or extension.</li>
               <li>The uploaded file will be directly saved to the view medicine section.</li>
-            </ul>
-
-           
+            </ul>           
         </div>
 
         

@@ -18,8 +18,8 @@ class CreateMedicineStocksTable extends Migration
             $table->unsignedBigInteger('medicine_id')->nullable();
             $table->unsignedBigInteger('medicine_manufacturer_id')->nullable();
             $table->string('supplier_name')->nullable();
-            $table->date('manufactured_date')->nullable();
-            $table->date('expiry_date')->nullable();
+            $table->dateTime('manufactured_date')->nullable();
+            $table->dateTime('expiry_date')->nullable();
             $table->double('cost_price')->nullable();
             $table->double('quantity')->nullable();
             $table->timestamps();

@@ -112,8 +112,9 @@ class MedicineStockController extends Controller
     }
    
     public function excelImport(Request $request ){
-        Excel::import(new MedicineImport, $request->file('import_file'));
-
+        Excel::import(new MedicineImport, $request->file('import_file')); 
+        Session::flash('success', 'You have successfully added medicine');
+        return back();
     }
 
 

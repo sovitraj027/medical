@@ -13,7 +13,7 @@
                     @csrf
                     <div class="form-group row">                      
                         <label for="Monthlytransaction" class="col-form-label col-md-3">Months</label>
-                        <select class="form-control col-md-6" id="select_medicine" name="month" >
+                        <select required class="form-control col-md-6" id="select_medicine" name="month" >
                             <option value="" disabled selected hidden>Choose Month</option>
                             <option value="1">Janauary</option>
                             <option value="2">Febuary</option>

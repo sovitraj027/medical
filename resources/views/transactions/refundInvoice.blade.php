@@ -19,14 +19,14 @@
                 <label for="Customer Name" class="col-sm-2 "><span class="float-right">Customer Name:</span></label>
                 <div class="col-md-9">
                     <input type="text" class="form-control full Name"
-                           id="customer_name" name="customer_name">
+                         required  id="customer_name" name="customer_name">
                 </div>
             </div>
 
             <div class="col-md-12 row mt-2">
                 <label for="Table Name" class="col-sm-2"><span class="float-right"> Select Medicine:</span></label>
                 <div class="col-md-9">
-                    <select class="form-control select_medicine" multiple="multiple" id="select_medicine" name="medicine_id[]">
+                    <select required class="form-control select_medicine" multiple="multiple" id="select_medicine" name="medicine_id[]">
                    
                         @if(isset($medicine))
                             @foreach($medicine as $medicine)
@@ -46,7 +46,7 @@
                 <label for="Table Name" class="col-sm-2"><span
                             class="float-right">Contact:</span></label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" id="contact" name="contact">
+                    <input type="text" required class="form-control" id="contact" name="contact">
                 </div>
             </div>
 
@@ -54,7 +54,7 @@
             <div class="col-md-12 row mt-2 ">
                 <label for="date" class="col-sm-2"><span class="float-right"> Date</span></label>
                 <div class="col-md-9">
-                    <input type="text" id="datepicker" name="date" class="form-control form-control-sm">
+                    <input type="text" required id="datepicker" name="date" class="form-control form-control-sm">
                 </div>
             </div>
 

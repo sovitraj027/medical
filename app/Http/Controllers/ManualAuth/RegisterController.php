@@ -21,6 +21,8 @@ class RegisterController extends Controller
         $data = $request->except('_token','_method','profile_photo');
 
         $data['password'] = Hash::make($data['password']);
+        $data['role_id'] = 2;
+
 
         $user=User::create($data);
 

@@ -15,7 +15,7 @@
                         <label for="Medicine" class="col-form-label col-md-3">Expiry Date:</label>
                         
                         <input type="date" class="form-control col-md-6" name="expiry_date" id="expiry_date"
-                        value="{{Request::get('name')}}"   placeholder="enter expiry date">
+                        value="{{Request::get('name')}}"  required placeholder="enter expiry date">
                         @if($errors->has('expiry_date'))
                             <p class="text-danger">{{ $errors->first('expiry_date') }}</p>
                         @endif

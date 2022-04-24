@@ -35,8 +35,7 @@ class MedicineStockController extends Controller
         MedicineStock::create($request->all());
         $medicine->increment('total_quantity', $request->quantity);
 
-        Session::flash('success', 'You have successfully added medicine');
-        return back();
+        return redirect()->back()->with('success', 'Cancel denied. Please contact your librarian');
     }
 
     public function createInvoice(Request $request){

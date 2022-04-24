@@ -19,11 +19,15 @@
             @include('medicine/medicineModal')
         </div>
         <div class="">
-            @if(count($errors->getBags()))
-            @endif
-            @if(Session::has('success'))
-                <div class="alert-success"> {{Session::get('success')}}</div>
-            @endif
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         </div>
         <h3 class="pt-3">Enter Medicine Stock</h3>
         <form action="{{route('add-medicine-stock')}}" method="post">
@@ -37,11 +41,11 @@
                                 <div class="col-xs-6">
                                     <label for="manufacturer-name" class="col-form-label">Medicine
                                         Name:</label>
-                                    <select name="medicine_id" class="form-control" id="medicine_id">
+                                    <select name="medicine_id" class="form-control" required id="medicine_id">
                                         <option value="">Please select any</option>
                                         @if($medicine)
                                             @foreach($medicine as $medicine)
-                                                <option value="{{$medicine->id}}">{{$medicine->medicine_name}}</option>
+                                                <option  value="{{$medicine->id}}">{{$medicine->medicine_name}}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -55,7 +59,7 @@
                                 <div class="col-xs-6">
                                     <label for="manufacturer-name" class="col-form-label">Manufacturer
                                         Name:</label>
-                                    <select name="medicine_manufacturer_id" class="form-control" id="medicine_manufacturer_id">
+                                    <select name="medicine_manufacturer_id"  required class="form-control" id="medicine_manufacturer_id">
                                         <option value="">Please select any</option>
                                         @if($medicineManufacturer)
                                             @foreach($medicineManufacturer as $manufacturer)
@@ -73,17 +77,17 @@
                                 <div class="col-xs-6">
                                     <label for="manufacturer-name" class="col-form-label">Supplier
                                         Name:</label>
-                                    <input type="text" class="form-control" name="supplier_name" id="supplier_name">
-                                    @if($errors->has('supplier_name'))
-                                        <p class="text-danger">{{ $errors->first('supplier_name') }}</p>
-                                    @endif
+                                    <input type="text" class="form-control" name="supplier_name"required id="supplier_name">
+                             @error('name')
+                             <span>{{$error}}</span>
+                             @enderror
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="Manufactured Date"><h4>Manufactured Date:</h4></label>
-                                    <input type="date" class="form-control" name="manufactured_date"
+                                    <input type="date" class="form-control" required name="manufactured_date"
                                            id="manufactured_date"
                                            placeholder="enter manufactured date">
                                     @if($errors->has('manufactured_date'))
@@ -94,7 +98,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="Expiry Date"><h4>Expiry Date:</h4></label>
-                                    <input type="date" class="form-control" name="expiry_date" id="expiry_date"
+                                    <input type="date" class="form-control" name="expiry_date" required id="expiry_date"
                                            placeholder="enter expiry date">
                                     @if($errors->has('expiry_date'))
                                         <p class="text-danger">{{ $errors->first('expiry_date') }}</p>
@@ -104,7 +108,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="phone"><h4>Cost Price:</h4></label>
-                                    <input type="number" class="form-control" name="cost_price" id="cost_price"
+                                    <input type="number" required class="form-control" name="cost_price" id="cost_price"
                                            placeholder="Cost Price">
                                     @if($errors->has('cost_price'))
                                         <p class="text-danger">{{ $errors->first('cost_price') }}</p>
@@ -114,7 +118,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="phone"><h4>Selling Price:</h4></label>
-                                    <input type="number" class="form-control" name="selling_price" id="phone_number"
+                                    <input  type="number" class="form-control" required name="selling_price" id="phone_number"
                                            placeholder="Selling Price">
                                     @if($errors->has('manufactured_date'))
                                         <p class="text-danger">{{ $errors->first('manufactured_date') }}</p>
@@ -124,7 +128,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="dosage"><h4>Quantity:</h4></label>
-                                    <input type="number" class="form-control" name="quantity" id="quantity"
+                                    <input type="number" class="form-control" required name="quantity" id="quantity"
                                            placeholder="Quantity">
                                     @if($errors->has('quantity'))
                                         <p class="text-danger">{{ $errors->first('quantity') }}</p>

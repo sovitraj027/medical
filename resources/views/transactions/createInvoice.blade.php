@@ -18,14 +18,14 @@
                 <label for="Customer Name" class="col-sm-2 "><span class="float-right">Customer Name:</span></label>
                 <div class="col-md-9">
                     <input type="text" class="form-control full Name"
-                           id="customer_name" name="customer_name">
+                         required  id="customer_name" name="customer_name">
                 </div>
             </div>
 
             <div class="col-md-12 row mt-2">
                 <label for="Table Name" class="col-sm-2"><span class="float-right"> Select Medicine:</span></label>
                 <div class="col-md-9">
-                    <select class="form-control select_medicine" multiple="multiple" id="select_medicine" name="medicine_id[]">
+                    <select class="form-control select_medicine" required multiple="multiple" id="select_medicine" name="medicine_id[]">
                    
                         @if(isset($medicine))
                             @foreach($medicine as $medicine)
@@ -45,7 +45,7 @@
                 <label for="Table Name" class="col-sm-2"><span
                             class="float-right">Contact:</span></label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" id="contact" name="contact">
+                    <input type="text" class="form-control" id="contact" required name="contact">
                 </div>
             </div>
 
@@ -53,7 +53,7 @@
             <div class="col-md-12 row mt-2 ">
                 <label for="date" class="col-sm-2"><span class="float-right"> Date</span></label>
                 <div class="col-md-9">
-                    <input type="text" id="datepicker" name="date" class="form-control form-control-sm">
+                    <input type="text" required id="datepicker" name="date" class="form-control form-control-sm">
                  
                 </div>
             </div>
@@ -75,7 +75,7 @@
                         </tbody>
                     </table>
                 </div>
-
+{{-- 
 
                 <div class="col-md-12  row">
                     <div class="col-md-6 mt-3">
@@ -88,8 +88,8 @@
                                        name="subTotalValue" value="">
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 mt-3">
+                    </div> --}}
+                    {{-- <div class="col-md-6 mt-3">
 
                         <div class="form-group row">
                             <label for="vat" class="col-sm-4 control-label">VAT 13%</label>
@@ -100,8 +100,8 @@
                                        value="">
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
+                    </div> --}}
+                    {{-- <div class="col-md-6">
 
                         <div class="form-group row">
                             <label for="totalAmount" class="col-sm-4 control-label">Total Amount</label>
@@ -112,7 +112,7 @@
                                        id="totalAmountValue" name="totalAmountValue" value="">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-md-6">
 
                         <div class="form-group row">
@@ -123,7 +123,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <div class="form-group row">
                             <label for="grandTotal" class="col-sm-4 control-label">Grand Total</label>
                             <div class="col-sm-8">
@@ -131,7 +131,7 @@
                                        name="grandTotal">
                             </div>
                         </div> <!--/form-group-->
-                    </div>
+                    </div> --}}
 
 
                     <div class="col-md-6">

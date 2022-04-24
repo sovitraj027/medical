@@ -15,12 +15,12 @@
                         
                             <label for="Medicine" class="col-form-label col-md-3">Medicine Name:</label>
                             @if(Request::get('name'))
-                                <input type="text" value="{{Request::get('name')}}"
+                                <input type="text" required  value="{{Request::get('name')}}"
                                        class="form-control col-md-6" id="name"
-                                       name="name">
+                                       name="name"  >
                             @else
                                 <input type="text" class="form-control col-md-6" id="name"
-                                       name="name">
+                                    required  name="name">
                             @endif
                             @if($errors->has('name'))
                                 <p class="text-danger">{{ $errors->first('name') }}</p>

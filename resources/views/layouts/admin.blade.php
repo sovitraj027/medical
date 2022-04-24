@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/css/app.css">
+    <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
     @yield('style')
 
 </head>
@@ -38,6 +39,20 @@
 </div>
 <!-- ./wrapper -->
 <script src="/js/app.js"></script>
+<script src="{{ asset('js/toastr.js') }}"></script>
+<script>
+    @if (Session::has('success'))
+    toastr.success("{{Session::get('success')}}")
+    @endif
+
+    @if (Session::has('error'))
+    toastr.error("{{Session::get('error')}}")
+    @endif
+
+    @if (Session::has('info'))
+    toastr.info("{{Session::get('info')}}")
+    @endif
+</script>
 @yield('scripts')
 </body>
 </html>

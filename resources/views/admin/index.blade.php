@@ -17,7 +17,7 @@
                     <div class="card-header  bg-info    ">
                         Total Sales:
                     </div>
-                    <div class="card-body bg-warning">
+                    <div class="card-body bg-secondary">
                         <span>{{$total_sale}}</span>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                     <div class="card-header">
                         Total Available Quantity:
                     </div>
-                    <div class="card-body bg-warning">
+                    <div class="card-body bg-secondary">
                         <span>{{$available_quantity}}</span>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     <div class="card-header bg-success">
                         Total Revenue:
                     </div>
-                    <div class="card-body bg-warning">
+                    <div class="card-body bg-secondary">
                         <span>Rs {{$revenue}}</span>
                     </div>
                 </div>
